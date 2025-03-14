@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Libros Web</title>
+    </head>
+    <body>
+        <h1>Libros Web</h1>
+        <p>Selecciona la letra a mostrar</p>
+        <div>
+            {% for letter in 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ' %}
+                <a href="/letra/{{letter}}">{{letter}}</a>
+            {% endfor %}
+        </div>
+    </body>
+</html>
