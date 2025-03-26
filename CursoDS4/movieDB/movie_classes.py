@@ -63,12 +63,13 @@ class Relacion:
 
 class User:
     ''' Clase para manejar la información de un usuario '''
-    def __init__(self, username, nombre_completo, email, password):
+    def __init__(self, username, nombre_completo, email, password, personaje):
         ''' Inicializa la clase con los datos del usuario '''
         self.username        = username
         self.nombre_completo = nombre_completo
         self.email           = email
         self.password        = password
+        self.personaje       = personaje
 
     def to_dict(self):
         ''' Devuelve un diccionario con la información del usuario '''
@@ -76,7 +77,8 @@ class User:
             'username': self.username,
             'nombre_completo': self.nombre_completo,
             'email': self.email,
-            'password': self.password
+            'password': self.password,
+            'personaje': self.personaje
         }
 
     def hash_string(self, string):
@@ -155,6 +157,25 @@ class SistemaCine:
             self.idx_actor += 1
             actor = Actor(self.idx_actor, nombre, fecha_nacimiento, ciudad_nacimiento, url_imagen, self.usuario_actual.username)
             self.actores[self.idx_actor] = actor
+
+    def agregar_pelicula(self, titulo_pelicula, fecha_lanzamiento, url_poster):
+        if self.usuario_actual:
+            new_id = self.idx_pelicula + 1
+            self.idx_pelicula = new_id
+            pelicula = Pelicula(new_id, titulo_pelicula, fecha_lanzamiento, url_poster)
+            self.peliculas[pelicula.id_pelicula] = pelicula
+
+    def agregar_relacion(self, id_pelicula, id_estrella):
+        if self.usuario_actual:
+            new_id = self.idx_relacion + 1
+            self.idx_relacion = new_id
+            relacion = Relacion(new_id, id_pelicula, id_estrella)
+            self.relaciones[relacion.id_relacion] = relacion
+
+    def agregar_usuario(self, username, nombre_completo, email, password):
+        if self.usuario_actual:
+            user = User(username, nombre_completo, email, password)
+            self.usuarios[user.username] = user
     
 if __name__ == '__main__':
     #archivo = "datos/actores.csv"
