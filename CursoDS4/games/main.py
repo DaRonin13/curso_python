@@ -1,5 +1,5 @@
 '''Programa principal de games'''
-from Athlete import Athlete
+from Athlete import athlete
 from Sport import Sport
 from Team import team
 from Game import Game
@@ -13,8 +13,8 @@ def main(archivo_torneo:str):
     else:
         players_mexico = ['Chicharito','Chucky','Ochoa','Guardado','Herrera','Jimenez','Tecatito','Gallardo','Salcedo','Moreno','Layun']
         players_españa = ['Ramos','Iniesta','Casillas','Xavi','Torres','Villa','Pique','Alba','Busquets','Pedro','Silva']
-        lista_mexico = [Athlete(x) for x in players_mexico]
-        lista_españa = [Athlete(x) for x in players_españa]
+        lista_mexico = [athlete(x) for x in players_mexico]
+        lista_españa = [athlete(x) for x in players_españa]
         soccer = Sport("Soccer", 11, "FIFA")
         mexico = team("Mexico", soccer, lista_mexico)
         españa = team("España", soccer, lista_españa)

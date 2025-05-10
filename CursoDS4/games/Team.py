@@ -1,4 +1,4 @@
-from Athlete import Athlete
+from Athlete import athlete
 from Sport import Sport
 
 class team:
@@ -9,7 +9,7 @@ class team:
         self.players = players
         self.sport = sport
 
-    def add_player(self, player:Athlete) -> None:
+    def add_player(self, player:athlete) -> None:
         '''Método para agregar un jugador al equipo'''
         self.players.append(player)
 
@@ -25,12 +25,12 @@ class team:
         return {"name":self.name, "sport":self.sport.to_json(), "players":[x.to_json() for x in self.players]}
     
 if __name__ == '__main__':
-    a1 = Athlete("Jordan")
-    a2 = Athlete("Johnson")
-    a3 = Athlete("Pipen")
-    a4 = Athlete("Bird")
-    a5 = Athlete("Kobe")
+    a1 = athlete("Jordan")
+    a2 = athlete("Johnson")
+    a3 = athlete("Pipen")
+    a4 = athlete("Bird")
+    a5 = athlete("Kobe")
     s = Sport("Basketball", 5, "NBA")
-    lakers = Team("Lakers",s, [a1, a2, a3, a4, a5])
+    lakers = team("Lakers",s, [a1, a2, a3, a4, a5])
     print(lakers)
     print(repr(lakers))

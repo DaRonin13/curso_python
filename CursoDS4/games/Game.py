@@ -1,9 +1,8 @@
 
 
-from Athlete import Athlete
+from Athlete import athlete
 from Sport import Sport
-from team import Team
-
+from Team import team
 class Game:
     '''Clase Game: Juego entre dos equipos'''
     sports_dict = {
@@ -14,7 +13,7 @@ class Game:
         'MLB': [x for x in range(0, 11)],
         'FIFA': [x for x in range(0, 11)],
     }
-    def __init__(self, A:Team, B:Team) -> None:
+    def __init__(self, A:team, B:team) -> None:
         '''Constructor de la clase Game'''
         self.A = A
         self.B = B
